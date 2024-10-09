@@ -105,7 +105,7 @@ st.subheader("Complex Calculation Unrelated to the Map!")
 
 st.write("Long-running calculation being calculated...")
 
-time.sleep(10)
+time.sleep(3)
 
 st.write("Long-running calculation complete!")
 
