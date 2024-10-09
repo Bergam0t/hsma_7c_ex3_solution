@@ -27,6 +27,9 @@ with st.sidebar:
     st.divider()
 
     st.markdown("#### Demand")
+    st.write(f"The calculated daily walk-in demand from the previous page is {st.session_state.walk_in_demand}")
+    st.write(f"The calculated daily call demand from the previous page is {st.session_state.calls_demand}")
+
     patient_inter_input = sim_duration_input / st.session_state.walk_in_demand
     call_inter_input = sim_duration_input / st.session_state.calls_demand
 
