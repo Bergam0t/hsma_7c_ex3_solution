@@ -15,7 +15,7 @@ st.title("Clinic Demand Estimator")
 
 @st.cache_data
 def load_map_data():
-    lsoa_demographics = geopandas.read_file("../../exercises/exercise_3/lsoa_demand_demographics.geojson")
+    lsoa_demographics = geopandas.read_file("lsoa_demand_demographics.geojson")
     lsoa_demographics["Region"] = lsoa_demographics["LSOA21NM"].str.replace("( \d{3})\w", "", regex=True).str.strip()
 
     new_col = True
