@@ -8,6 +8,11 @@ import time
 
 st.set_page_config(layout="wide")
 
+st.logo("hsma_logo.png")
+
+if 'selected_regions' not in st.session_state:
+    st.session_state.selected_regions = ['Exeter']
+
 with open("style.css") as css:
     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
@@ -33,14 +38,14 @@ def get_map():
 
     lsoa_demographics, df_display = load_map_data()
 
-    selected_regions = st.multiselect(
+    st.session_state.selected_regions = st.multiselect(
         "Select Regions to Include",
         lsoa_demographics["Region"].drop_duplicates().sort_values().tolist(),
-        default=["Exeter"]
+        default=st.session_state.selected_regions
     )
 
     edited_df = st.data_editor(
-        df_display[df_display["Region"].isin(selected_regions)]
+        df_display[df_display["Region"].isin(st.session_state.selected_regions)]
         )
 
     lsoa_demographics = pd.merge(
